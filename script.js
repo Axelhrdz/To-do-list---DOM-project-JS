@@ -37,16 +37,21 @@ form.addEventListener('submit', function(e){
         console.log(checkmark);
     }
 
-
-
-
-
     input.value = '';
 })
 
 
 
-//Mark items as completed/checked
+//Delete items function
 mainContainer.addEventListener('click', function(e){
+    console.log(e);
     console.log(e.target);
+
+    if(e.target.id === "delete"){
+        console.log(e.target.parentElement.parentElement)
+
+
+        e.target.parentElement.parentElement.remove()
+        
+    } 
 })
