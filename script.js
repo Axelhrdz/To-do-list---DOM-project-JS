@@ -11,7 +11,7 @@ console.log(checkmark);
 
 
 
-//Submitting form and getting value of input
+//Submitting form and getting value of input ------------------
 form.addEventListener('submit', function(e){
     e.preventDefault();
 
@@ -42,7 +42,7 @@ form.addEventListener('submit', function(e){
 
 
 
-//Delete items function
+//Delete items function ------------------
 mainContainer.addEventListener('click', function(e){
     console.log(e);
     console.log(e.target);
@@ -54,4 +54,34 @@ mainContainer.addEventListener('click', function(e){
         e.target.parentElement.parentElement.remove()
         
     } 
+});
+
+//Check-mark function ------------------
+mainContainer.addEventListener('click', function(e){
+    console.log(e);
+    console.log(e.target);
+
+    if(e.target.id === "check"){
+        // console.log(e.target.parentElement.parentElement);
+        let = parentTextContainer = e.target.parentElement.parentElement;
+        console.log(parentTextContainer);
+        // console.log(parentTextContainer.firstChild);
+
+       const textChild = parentTextContainer.firstChild;
+       console.log(textChild);
+
+
+       console.log(textChild.classList)
+       textChild.classList.toggle("sucess");
+
+
+        console.log(true);
+
+
+
+
+
+    } else {
+        console.log(false);
+    }
 })

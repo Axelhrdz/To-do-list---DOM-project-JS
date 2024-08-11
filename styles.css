@@ -53,3 +53,10 @@ ion-icon{
 #check:hover{
     color: green;
 }
+
+
+/* Check functionality */
+
+.sucess{
+    text-decoration: line-through;
+}
