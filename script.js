@@ -62,6 +62,8 @@ mainContainer.addEventListener('click', function(e){
     console.log(e.target);
 
     if(e.target.id === "check"){
+        const checkIcon = e.target;
+        console.log(checkIcon);
         // console.log(e.target.parentElement.parentElement);
         let = parentTextContainer = e.target.parentElement.parentElement;
         console.log(parentTextContainer);
@@ -70,16 +72,19 @@ mainContainer.addEventListener('click', function(e){
        const textChild = parentTextContainer.firstChild;
        console.log(textChild);
 
-
+       // changing text style to cross text 
        console.log(textChild.classList)
        textChild.classList.toggle("sucess");
 
 
+
+        //changing check button to green
+        checkIcon.classList.toggle("checkColor");
+
+        //changin icon name
+        checkIcon.getAttribute("name");
+
         console.log(true);
-
-
-
-
 
     } else {
         console.log(false);
