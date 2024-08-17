@@ -11,6 +11,7 @@ console.log(input);
 console.log(checkmark);
 console.log(nullSubmitAlert);
 // console.log(nullSubmitAlert.style.opacity);
+console.log(localStorage);
 
 
 
@@ -24,7 +25,7 @@ form.addEventListener('submit', function(e){
         // alert('please enter a value/text')
 
         nullSubmitAlert.style.opacity = '1';
-        setTimeout(fadeout, 2000);
+        setTimeout(fadeout, 800);
 
         function fadeout(){
             nullSubmitAlert.style.opacity = '0';
