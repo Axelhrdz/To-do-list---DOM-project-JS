@@ -103,10 +103,9 @@ ion-icon{
     color: green;
 }
 
-
-
 .nullSubmitAlert{
     opacity: 0;
+    transition: 1s opacity ease-out;
     color: red;
     font-weight: 500;
 }

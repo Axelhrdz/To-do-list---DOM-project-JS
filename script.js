@@ -22,14 +22,13 @@ form.addEventListener('submit', function(e){
 
     if(!input.value){
         // alert('please enter a value/text')
-        let opacity = nullSubmitAlert.style.opacity;
-        opacity = 1;
-        setInterval(function(){
-            if(opacity > 0){
-                opacity -= 0.1;
-                nullSubmitAlert.style.opacity = opacity;
-            }
-        }, 300)
+
+        nullSubmitAlert.style.opacity = '1';
+        setTimeout(fadeout, 2000);
+
+        function fadeout(){
+            nullSubmitAlert.style.opacity = '0';
+        }
     } else{
         const newTask = document.createElement("div");
         newTask.classList.add("test");
@@ -49,6 +48,7 @@ form.addEventListener('submit', function(e){
     }
 
     input.value = '';
+
 })
 
 
