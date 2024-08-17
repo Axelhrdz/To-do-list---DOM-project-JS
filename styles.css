@@ -29,7 +29,7 @@ input, button, textarea, select{
 }
 
 .headline{
-    margin: 1em;
+    margin: 1em 1em 0.4em 1em;
 }
 .main--container{
     max-width: 80%;
@@ -101,4 +101,12 @@ ion-icon{
 }
 .checkColor{
     color: green;
+}
+
+
+
+.nullSubmitAlert{
+    opacity: 0;
+    color: red;
+    font-weight: 500;
 }

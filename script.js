@@ -3,11 +3,14 @@ const form = document.getElementById('form');
 const input = document.getElementById('task');
 const mainContainer = document.querySelector('.main--container');
 const checkmark = document.getElementById('check');
+const nullSubmitAlert = document.querySelector('.nullSubmitAlert');
 
 
 console.log(form);
 console.log(input);
 console.log(checkmark);
+console.log(nullSubmitAlert);
+// console.log(nullSubmitAlert.style.opacity);
 
 
 
@@ -18,7 +21,15 @@ form.addEventListener('submit', function(e){
     console.log(input.value)
 
     if(!input.value){
-        alert('please enter a value/text')
+        // alert('please enter a value/text')
+        let opacity = nullSubmitAlert.style.opacity;
+        opacity = 1;
+        setInterval(function(){
+            if(opacity > 0){
+                opacity -= 0.1;
+                nullSubmitAlert.style.opacity = opacity;
+            }
+        }, 300)
     } else{
         const newTask = document.createElement("div");
         newTask.classList.add("test");
