@@ -20,7 +20,7 @@ form.addEventListener('submit', function(e){
     if(!input.value){
         alert('please enter a value/text')
     } else{
-        const newTask = document.createElement("div.test");
+        const newTask = document.createElement("div");
         newTask.classList.add("test");
         console.log(newTask);
     

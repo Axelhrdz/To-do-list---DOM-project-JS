@@ -31,6 +31,40 @@ input, button, textarea, select{
 .headline{
     margin: 1em;
 }
+.main--container{
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.add-task-title{
+    font-weight: 500;
+}
+.input--task{
+    border: none;
+    box-shadow: 0.5px 0.5px 2px #6f6f6f;
+}
+.form-task{
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+}
+.btn{
+    width: 33.33px;
+    height: 33.33px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    background-color: #5dade2;
+/* font size button */
+    font-size: 1.4rem; 
+    color: #fff;
+    transition: 0.2s;
+}
+.btn:hover{
+    background-color: #000;
+}
 
 
 
@@ -42,6 +76,7 @@ input, button, textarea, select{
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    gap: 1.5rem;
 }
 .test--icons{
     display: flex;
