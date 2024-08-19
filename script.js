@@ -15,6 +15,7 @@ console.log(localStorage);
 
 
 
+
 //Submitting form and getting value of input ------------------
 form.addEventListener('submit', function(e){
     e.preventDefault();
@@ -31,6 +32,13 @@ form.addEventListener('submit', function(e){
             nullSubmitAlert.style.opacity = '0';
         }
     } else{
+
+
+        //Local Storage test
+    
+
+        //Local Storage test
+
         const newTask = document.createElement("div");
         newTask.classList.add("test");
         console.log(newTask);

@@ -105,7 +105,7 @@ ion-icon{
 
 .nullSubmitAlert{
     opacity: 0;
-    transition: 0.5s opacity ease-out;
+    transition: 0.3s opacity ease-out;
     color: red;
     font-weight: 500;
 }
