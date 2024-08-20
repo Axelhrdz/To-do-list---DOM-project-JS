@@ -14,11 +14,33 @@ console.log(nullSubmitAlert);
 // console.log(nullSubmitAlert.style.opacity);
 // console.log(localStorage);
 
+
 //Initialize task array
 const taskArray = localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : [];
 console.log(taskArray);
 let idCounter = 0;
 
+
+//Function to render tasks in the DOM
+function renderTasks(){
+    // mainContainer.innerHTML = "";
+    taskArray.forEach(task => {
+        const newTask = document.createElement("div");
+        newTask.classList.add("test");
+
+        newTask.innerHTML =
+            `<span>${task.task}</span>
+                <div class="test--icons">
+                    <ion-icon name="trash-sharp" id="delete"></ion-icon>
+                    <ion-icon name="checkmark-circle-sharp" id="check"></ion-icon>
+                </div>`;
+
+
+                mainContainer.appendChild(newTask);
+    });     
+}
+
+renderTasks();
 
 
 //Submitting form and getting value of input ------------------
@@ -56,27 +78,28 @@ form.addEventListener('submit', function(e){
         createTaskItem();
 
         localStorage.setItem("tasks", JSON.stringify(taskArray));
+         renderTasks();
         console.log(JSON.parse(localStorage.getItem("tasks")));
         // console.log(localStorage);
 
 
-        const newTask = document.createElement("div");
-        newTask.classList.add("test");
-        console.log(newTask);
+        // const newTask = document.createElement("div");
+        // newTask.classList.add("test");
+        // console.log(newTask);
     
 
-        taskArray.forEach(task => {
-            console.log(task);        //NOTE: Need to check why the task in the DOM does not stay there when refreshing
+        // taskArray.forEach(task => {
+        //     console.log(task);        //NOTE: Need to check why the task in the DOM does not stay there when refreshing
 
-            newTask.innerHTML =
-            `<span>${task.task}</span>
-                <div class="test--icons">
-                    <ion-icon name="trash-sharp" id="delete"></ion-icon>
-                    <ion-icon name="checkmark-circle-sharp" id="check"></ion-icon>
-                </div>`
+        //     newTask.innerHTML =
+        //     `<span>${task.task}</span>
+        //         <div class="test--icons">
+        //             <ion-icon name="trash-sharp" id="delete"></ion-icon>
+        //             <ion-icon name="checkmark-circle-sharp" id="check"></ion-icon>
+        //         </div>`
 
-            mainContainer.appendChild(newTask); 
-        });
+        //     mainContainer.appendChild(newTask); 
+        // });
 
         // newTask.innerHTML = 
         // `<span>${taskArray[0].task}</span>
