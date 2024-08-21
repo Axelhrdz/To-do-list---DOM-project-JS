@@ -1,172 +1,77 @@
 console.log(localStorage)
 // Getting elements
 const form = document.getElementById('form');
-const input = document.getElementById('task');
+const input = document.getElementById('inputTask');
 const mainContainer = document.querySelector('.main--container');
-const checkmark = document.getElementById('check');
-const nullSubmitAlert = document.querySelector('.nullSubmitAlert');
+const ulContainer = document.querySelector('.ulContainer');
+const clearTest = document.getElementById('clearTest');
+// const checkmark = document.getElementById('check');
+// const nullSubmitAlert = document.querySelector('.nullSubmitAlert');
 
+
+loadItems();
 
 console.log(form);
 console.log(input);
-console.log(checkmark);
-console.log(nullSubmitAlert);
-// console.log(nullSubmitAlert.style.opacity);
-// console.log(localStorage);
+console.log(ulContainer);
+
+clearTest.addEventListener('click', function(){
+    localStorage.clear();
+    location.reload();
+})
 
 
-//Initialize task array
-const taskArray = localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : [];
-console.log(taskArray);
-let idCounter = 0;
+//Adding Task
+function addTask(){
+    const task = input.value.trim();
+    console.log(task);
 
+    if(task){
+        createElement(task);
 
-//Function to render tasks in the DOM
-function renderTasks(){
-    // mainContainer.innerHTML = "";
-    taskArray.forEach(task => {
-        const newTask = document.createElement("div");
-        newTask.classList.add("test");
+        input.value = '';
 
-        newTask.innerHTML =
-            `<span>${task.task}</span>
-                <div class="test--icons">
-                    <ion-icon name="trash-sharp" id="delete"></ion-icon>
-                    <ion-icon name="checkmark-circle-sharp" id="check"></ion-icon>
-                </div>`;
-
-
-                mainContainer.appendChild(newTask);
-    });     
+        saveTask();
+    }
 }
 
-renderTasks();
-
-
-//Submitting form and getting value of input ------------------
-
+// Submitting responses
 form.addEventListener('submit', function(e){
     e.preventDefault();
 
-    console.log(input.value)
-
-    if(!input.value){
-        // alert('please enter a value/text')
-
-        nullSubmitAlert.style.opacity = '1';
-        setTimeout(fadeout, 800);
-
-        function fadeout(){
-            nullSubmitAlert.style.opacity = '0';
-        }
-    } else{
-        idCounter++;
-        createTaskItem = function(){
-            // console.log(input.value);
-            let itemSubmitted = 
-            {
-                task: input.value,
-                id: idCounter
-            }
-
-            taskArray.push(itemSubmitted);
-            // console.log(taskArray);
-            
-            console.log(itemSubmitted);
-            // console.log(idCounter);
-        };
-        createTaskItem();
-
-        localStorage.setItem("tasks", JSON.stringify(taskArray));
-         renderTasks();
-        console.log(JSON.parse(localStorage.getItem("tasks")));
-        // console.log(localStorage);
-
-
-        // const newTask = document.createElement("div");
-        // newTask.classList.add("test");
-        // console.log(newTask);
-    
-
-        // taskArray.forEach(task => {
-        //     console.log(task);        //NOTE: Need to check why the task in the DOM does not stay there when refreshing
-
-        //     newTask.innerHTML =
-        //     `<span>${task.task}</span>
-        //         <div class="test--icons">
-        //             <ion-icon name="trash-sharp" id="delete"></ion-icon>
-        //             <ion-icon name="checkmark-circle-sharp" id="check"></ion-icon>
-        //         </div>`
-
-        //     mainContainer.appendChild(newTask); 
-        // });
-
-        // newTask.innerHTML = 
-        // `<span>${taskArray[0].task}</span>
-        //     <div class="test--icons">
-        //         <ion-icon name="trash-sharp" id="delete"></ion-icon>
-        //         <ion-icon name="checkmark-circle-sharp" id="check"></ion-icon>
-        //     </div>`
-    
-        //  mainContainer.appendChild(newTask); 
-    
-    
-        // console.log(checkmark);
-    }
-
-    input.value = '';
-
+    addTask();
 });
 
 
 
+//Creating element with the task
+function createElement(task){
+    const liItem = document.createElement('li');
+    liItem.textContent = task;
+    ulContainer.appendChild(liItem);
 
-
-//Delete items function ------------------
-mainContainer.addEventListener('click', function(e){
-    // console.log(e);
-    // console.log(e.target);
-
-    if(e.target.id === "delete"){
-        // console.log(e.target.parentElement.parentElement)
-
-
-        e.target.parentElement.parentElement.remove()
-        
-    } 
-});
-
-//Check-mark function ------------------
-mainContainer.addEventListener('click', function(e){
-    // console.log(e);
-    // console.log(e.target);
-
-    if(e.target.id === "check"){
-        const checkIcon = e.target;
-        console.log(checkIcon);
-        // console.log(e.target.parentElement.parentElement);
-        let = parentTextContainer = e.target.parentElement.parentElement;
-        console.log(parentTextContainer);
-        // console.log(parentTextContainer.firstChild);
-
-       const textChild = parentTextContainer.firstChild;
-       console.log(textChild);
-
-       // changing text style to cross text 
-       console.log(textChild.classList)
-       textChild.classList.toggle("sucess");
+    console.log(liItem);
+}
 
 
 
-        //changing check button to green
-        checkIcon.classList.toggle("checkColor");
+//Saving information in local Storage
+function saveTask(){
+    let tasks = [];
 
-        //changin icon name
-        checkIcon.getAttribute("name");
+    ulContainer.querySelectorAll('li').forEach(item => {
+        tasks.push(item.textContent.trim());
 
-        console.log(true);
+        // console.log(tasks);
+    });
 
-    } else {
-        // console.log(false);
-    }
-})
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+
+//Function to load tasks, if existing localStorage data
+function loadItems(){
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+    tasks.forEach(item => createElement(item));
+}

@@ -28,6 +28,10 @@ input, button, textarea, select{
     font: inherit;
 }
 
+li{
+    list-style-type: none;
+}
+
 .headline{
     margin: 1em 1em 0.4em 1em;
 }
@@ -108,4 +112,14 @@ ion-icon{
     transition: 0.3s opacity ease-out;
     color: red;
     font-weight: 500;
+}
+
+
+/* local Storage edits made */
+.ulContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
