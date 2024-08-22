@@ -7,6 +7,9 @@ const ulContainer = document.querySelector('.ulContainer');
 const clearTest = document.getElementById('clearTest');
 // const checkmark = document.getElementById('check');
 // const nullSubmitAlert = document.querySelector('.nullSubmitAlert');
+const deleteOpt = document.querySelector('.deleteOpt');
+const checkOpt = document.querySelector('.checkOpt');
+
 
 
 loadItems();
@@ -15,10 +18,17 @@ console.log(form);
 console.log(input);
 console.log(ulContainer);
 
+//Clear localStorage and DOM elements
 clearTest.addEventListener('click', function(){
     localStorage.clear();
     location.reload();
 })
+
+deleteOpt.addEventListener('click', function(e){
+    console.log(e);  //this wont't work since the deleteOpt it is dinamically created inside createElement function, find a workaround for tomorrow
+})
+
+
 
 
 //Adding Task
@@ -47,7 +57,31 @@ form.addEventListener('submit', function(e){
 //Creating element with the task
 function createElement(task){
     const liItem = document.createElement('li');
+    liItem.classList.add("liItem");
     liItem.textContent = task;
+
+
+    //List items buttons creation
+    const optionContainer = document.createElement('div');
+    optionContainer.classList.add('optionsContainer');
+
+    const deleteOpt = document.createElement('span');
+    deleteOpt.textContent = 'Delete';
+    deleteOpt.classList.add('deleteOpt');
+        
+    const checkOpt = document.createElement('span');
+    checkOpt.textContent = 'Check';
+    checkOpt.classList.add('checkOpt');
+
+
+    //Appending buttons to its div container
+    optionContainer.appendChild(deleteOpt);
+    optionContainer.appendChild(checkOpt);
+
+    liItem.appendChild(optionContainer);
+
+
+
     ulContainer.appendChild(liItem);
 
     console.log(liItem);
@@ -60,7 +94,7 @@ function saveTask(){
     let tasks = [];
 
     ulContainer.querySelectorAll('li').forEach(item => {
-        tasks.push(item.textContent.trim());
+        tasks.push(item.textContent.replace('Delete', ' ').replace('Check', ' ').trim());
 
         // console.log(tasks);
     });

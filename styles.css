@@ -118,8 +118,40 @@ ion-icon{
 /* local Storage edits made */
 .ulContainer{
     width: 100%;
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 0.3em;
+}
+
+.liItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.optionsContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+}
+.optionsContainer span{
+    font-size: 0.6rem;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 0.3em;
+    border-radius: 3px;
+    color: white;
+    background-color: #464646;
+}
+.deleteOpt:hover{
+    background-color: #ff7979;
+    color: black;
+}
+.checkOpt:hover{
+    background-color: #79ffa0;
+    color: black;
 }
